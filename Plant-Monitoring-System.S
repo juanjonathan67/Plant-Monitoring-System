@@ -54,37 +54,36 @@ w3: SBIC  PIND, 7
     ;-------------------
     RCALL binary2decimal  ;humidity in decimal
     ;-------------------
-    RCALL YL39
-    RCALL LDR
-    RCALL BUZZ
+    RJMP YL39
     RJMP loop           ;go back & get another sensor reading
 
 YL39:
+  CLR R29
   SBIS PIND, 5
   RJMP YL39out
   CBI PORTD, 1
-  RET
+  RJMP LDR
 
 YL39out:
+  INC R29
   SBI PORTD, 1
-  RJMP loop
+  RJMP LDR
 
 LDR:
   SBIS PIND, 6
   RJMP LDRout
   CBI PORTD, 2
-  RET
+  RJMP BUZZ
 
 LDRout:
+  INC R29
   SBI PORTD, 2
-  RJMP loop
+  RJMP BUZZ
 
 BUZZ:
-  IN R16, PIND
-  ANDI R16, 0b01100000
-  CPI R16, 0b01100000
+  CPI R29, 2
   BREQ BUZZout
-  RET
+  RJMP loop
 
 BUZZout:
   SBI PORTD, 3
