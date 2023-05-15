@@ -93,6 +93,11 @@ LDRout:
   RCALL MAX7219_disp_text_dark  ;ke disp dark
   RCALL delay_5s        ;delay 5s
   RJMP BUZZ             ;lompat ke buzz
+  INC R29               ;increment apabila dark
+  SBI PORTD, 2        
+  RCALL MAX7219_disp_text_dark  ;ke disp dark
+  RCALL delay_5s        ;delay 5s
+  RJMP BUZZ             ;lompat ke buzz
 
 BUZZ:
   MOV R30, R29
@@ -204,6 +209,20 @@ l2: IN    R20, TIFR0      ;get TIFR0 byte & check
     ;---------------------------------------------------------
     LDI   R20, (1<<OCF0A)
     OUT   TIFR0, R20      ;clear OCF0 flag
+    RET
+delay_5s:
+    ldi  r21, 2
+    ldi  r22, 150
+    ldi  r23, 216
+    ldi  r24, 9
+l_5: dec  r24
+    brne l_5
+    dec  r23
+    brne l_5
+    dec  r22
+    brne l_5
+    dec  r21
+    brne l_5
     RET
 delay_5s:
     ldi  r21, 2
