@@ -67,12 +67,15 @@ YL39:
   SBIS PIND, 5
   RJMP YL39out
   CBI PORTD, 1
+  RCALL MAX7219_disp_text_moist
   RJMP LDR
 
 YL39out:
   INC R29
   SBI PORTD, 1
+  RCALL MAX7219_disp_text_dry
   RJMP LDR
+  
 
 LDR:
   SBIS PIND, 6
@@ -305,8 +308,96 @@ MAX7219_disp_text_dark:
       RCALL send_bytes      ;send command & data to MAX7219
       ;--------------------------------------------------------
       RET
-MAX7219_disp_text_dry:
+;==============================================================
 MAX7219_disp_text_moist:
+;-----------------
+      LDI   R17, 0x09       ;set decoding mode command
+      LDI   R18, 0b00000000 ;decoding byte
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;--------------------------------------------------------
+      LDI   R17, 0x08       ;select digit 8
+      LDI   R18, 0x54       ;data = n
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;--------------------------------------------------------
+      LDI   R17, 0x07       ;select digit 7
+      LDI   R18, 0x54       ;data = n
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;--------------------------------------------------------
+      LDI   R17, 0x06       ;select digit 6
+      LDI   R18, 0x1D       ;data = o
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;--------------------------------------------------------
+       LDI   R17, 0x05       ;select digit 5
+      LDI   R18, 0x06       ;data = i
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;--------------------------------------------------------
+       LDI   R17, 0x04       ;select digit 4
+      LDI   R18, 0x6D       ;data = s
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;--------------------------------------------------------
+      LDI   R17, 0x03       ;select digit 3
+      LDI   R18, 0x0F       ;data = t
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;--------------------------------------------------------
+      LDI   R17, 0x02       ;select digit 2
+      LDI   R18, 0x00       ;data = SPACE
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;--------------------------------------------------------
+      LDI   R17, 0x01       ;select digit 1
+      LDI   R18, 0x00       ;data = SPACE
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;-------------------------------------------------------- 
+      LDI   R17, 0x00       ;select digit 0
+      LDI   R18, 0x00       ;data = SPACE
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;--------------------------------------------------------     
+      RET
+;==============================================================
+MAX7219_disp_text_dry:
+;-----------------
+      LDI   R17, 0x09       ;set decoding mode command
+      LDI   R18, 0b00000000 ;decoding byte
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;--------------------------------------------------------
+      LDI   R17, 0x08       ;select digit 8
+      LDI   R18, 0x5E       ;data = d
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;--------------------------------------------------------
+      LDI   R17, 0x07       ;select digit 7
+      LDI   R18, 0x05       ;data = r
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;--------------------------------------------------------
+      LDI   R17, 0x06       ;select digit 6
+      LDI   R18, 0x6E       ;data = y
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;--------------------------------------------------------
+      LDI   R17, 0x05       ;select digit 5
+      LDI   R18, 0x00       ;data = SPACE
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;--------------------------------------------------------
+      LDI   R17, 0x04       ;select digit 4
+      LDI   R18, 0x00       ;data = SPACE
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;--------------------------------------------------------
+      LDI   R17, 0x03       ;select digit 3
+      LDI   R18, 0x00       ;data = SPACE
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;--------------------------------------------------------
+      LDI   R17, 0x02       ;select digit 2
+      LDI   R18, 0x00       ;data = SPACE
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;--------------------------------------------------------
+      LDI   R17, 0x01       ;select digit 1
+      LDI   R18, 0x00       ;data = SPACE
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;-------------------------------------------------------- 
+      LDI   R17, 0x00       ;select digit 0
+      LDI   R18, 0x00       ;data = SPACE
+      RCALL send_bytes      ;send command & data to MAX7219
+      ;--------------------------------------------------------     
+      RET
+
+
 ;==============================================================
 send_bytes:
       CBI   PORTB, SS       ;enable slave device MAX7219
