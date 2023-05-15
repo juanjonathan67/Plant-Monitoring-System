@@ -1,0 +1,20 @@
+#define __SFR_OFFSET 0x00
+#include "avr/io.h"
+
+.global main
+
+main: 
+  LDI R16, 0xF0
+  OUT DDRD, R16
+
+loop:
+  SBIS PIND, 6
+  RJMP led
+  CBI PORTD, 1
+  CBI PORTD, 2
+  RJMP loop
+
+led:
+  SBI PORTD, 1
+  SBI PORTD, 2
+  RJMP loop
