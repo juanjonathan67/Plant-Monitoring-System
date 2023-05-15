@@ -63,44 +63,61 @@ w3: SBIC  PIND, 7
     RJMP loop           ;go back & get another sensor reading
 
 YL39:
-  CLR R29
-  SBIS PIND, 5
-  RJMP YL39out
-  CBI PORTD, 1
-  RCALL MAX7219_disp_text_moist
-  RJMP LDR
+  CLR R29               ;Menggunakan register R29
+  SBIS PIND, 5          ;Cek YL39
+  RJMP YL39out          ;jika dry pindah ke YL39out
+  CBI PORTD, 1          
+  RCALL MAX7219_disp_text_moist ;ke disp moist
+  RJMP LDR              ;apabila moist maka ke LDR
 
 YL39out:
-  INC R29
-  SBI PORTD, 1
-  RCALL MAX7219_disp_text_dry
-  RJMP LDR
+  INC R29               ;increment apabila dry
+  SBI PORTD, 1          
+  RCALL MAX7219_disp_text_dry ;ke disp dry
+  RJMP LDR              ;lompat ke ldr
   
-
 LDR:
-  SBIS PIND, 6
-  RJMP LDRout
-  CBI PORTD, 2
-  RCALL MAX7219_disp_text_light
-  RCALL delay_5s
-  RJMP BUZZ
+  SBIS PIND, 6          ;cek LDR
+  RJMP LDRout           ;apabila dark pindah ke LDRout
+  CBI PORTD, 2          
+  RCALL MAX7219_disp_text_light ;ke disp light
+  RCALL delay_5s        ;delay
+  RJMP BUZZ             ;lompat ke buzz
 
 LDRout:
-  INC R29
-  SBI PORTD, 2
-  RCALL MAX7219_disp_text_dark
-  RCALL delay_5s
-  RJMP BUZZ
+  INC R29               ;increment apabila dark
+  SBI PORTD, 2        
+  RCALL MAX7219_disp_text_dark  ;ke disp dark
+  RCALL delay_5s        ;delay 5s
+  RJMP BUZZ             ;lompat ke buzz
 
 BUZZ:
-  CPI R29, 2
-  BREQ BUZZout
+  CPI R29, 2            ;apabila dark dan dry
+  BREQ BUZZout          ;ke buzzout
+  CPI R29, 1            ;apabila salah satu dark atau dry
+  BREQ Warning          ;ke warning
+  CPI R29, 0            ;apabila light dan moist
+  BREQ Clear            ;ke clear
   RJMP loop
 
 BUZZout:
-  SBI PORTD, 3
+  SBI PORTD, 3          ;set buzzer
+  SBI PORTD, 1          ;set led merah     
   RCALL delay1_s
-  CBI PORTD, 3
+  CBI PORTD, 3          ;menyalakan buzzer
+  CBI PORTD, 1          ;menyalakan led merah
+  RJMP loop
+
+Warning: 
+  SBI PORTD, 0          ;set led kuning
+  RCALL delay1_s  
+  CBI PORTD, 0          ;menyalakan led kuning
+  RJMP loop
+
+Clear:
+  SBI PORTD, 2          ;set led hijau
+  RCALL delay1_s
+  CBI PORTD, 2          ;menyalakan led hijau
   RJMP loop
 
 delay1_s:
@@ -316,15 +333,15 @@ MAX7219_disp_text_moist:
       RCALL send_bytes      ;send command & data to MAX7219
       ;--------------------------------------------------------
       LDI   R17, 0x08       ;select digit 8
-      LDI   R18, 0x54       ;data = n
+      LDI   R18, 0x15       ;data = n
       RCALL send_bytes      ;send command & data to MAX7219
       ;--------------------------------------------------------
       LDI   R17, 0x07       ;select digit 7
-      LDI   R18, 0x54       ;data = n
+      LDI   R18, 0x15       ;data = n
       RCALL send_bytes      ;send command & data to MAX7219
       ;--------------------------------------------------------
       LDI   R17, 0x06       ;select digit 6
-      LDI   R18, 0x1D       ;data = o
+      LDI   R18, 0x7E       ;data = o
       RCALL send_bytes      ;send command & data to MAX7219
       ;--------------------------------------------------------
        LDI   R17, 0x05       ;select digit 5
@@ -332,7 +349,7 @@ MAX7219_disp_text_moist:
       RCALL send_bytes      ;send command & data to MAX7219
       ;--------------------------------------------------------
        LDI   R17, 0x04       ;select digit 4
-      LDI   R18, 0x6D       ;data = s
+      LDI   R18, 0x5B       ;data = s
       RCALL send_bytes      ;send command & data to MAX7219
       ;--------------------------------------------------------
       LDI   R17, 0x03       ;select digit 3
@@ -360,7 +377,7 @@ MAX7219_disp_text_dry:
       RCALL send_bytes      ;send command & data to MAX7219
       ;--------------------------------------------------------
       LDI   R17, 0x08       ;select digit 8
-      LDI   R18, 0x5E       ;data = d
+      LDI   R18, 0x3D       ;data = d
       RCALL send_bytes      ;send command & data to MAX7219
       ;--------------------------------------------------------
       LDI   R17, 0x07       ;select digit 7
@@ -368,7 +385,7 @@ MAX7219_disp_text_dry:
       RCALL send_bytes      ;send command & data to MAX7219
       ;--------------------------------------------------------
       LDI   R17, 0x06       ;select digit 6
-      LDI   R18, 0x6E       ;data = y
+      LDI   R18, 0x3B       ;data = y
       RCALL send_bytes      ;send command & data to MAX7219
       ;--------------------------------------------------------
       LDI   R17, 0x05       ;select digit 5
