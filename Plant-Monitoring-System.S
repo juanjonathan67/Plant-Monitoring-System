@@ -11,6 +11,7 @@ main:
   RCALL SPI_MAX7219_init
   LDI R16, 0xF0
   OUT DDRD, R16
+  SBI DDRB, 0
 
 ;=================================================================
 DHT11_sensor:
@@ -18,9 +19,8 @@ DHT11_sensor:
 loop:
 ;--------------------------------------------------------
     CBI PORTD, 0
-    CBI PORTD, 4
     CBI PORTD, 2
-    CBI PORTD, 3
+    CBI PORTD, 4
 ;--------------------------------------------------------
     RCALL MAX7219_clear
     RCALL MAX7219_disp_text_temp_humid
@@ -100,10 +100,11 @@ BUZZ:
   BREQ Warning          ;ke warning
   RJMP Clear            ;ke clear
   
-BUZZout:
-  SBI PORTD, 2          ;set led merah   
-  SBI PORTD, 3          ;set buzzer   
+BUZZout:  
+  SBI PORTD, 2          ;set led merah  
+  SBI PORTB, 0          ;set buzzer   
   RCALL delay_5s
+  CBI PORTB, 0
   RJMP loop
 
 Warning: 
@@ -250,7 +251,7 @@ MAX7219_disp_text_temp_humid:
       LDI   R17, 0x09       ;set decoding mode command
       LDI   R18, 0b01100011 ;decoding byte
       RCALL send_bytes      ;send command & data to MAX7219
-    
+      
       RCALL delay_2s
 ;-----------------
       LDI   R17, 0x08       ;select digit 7
