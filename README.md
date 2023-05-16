@@ -12,21 +12,21 @@ The hardware and design implementation of the Plant Monitoring System involves s
 
 ### Components:
 ### 1. Arduino UNO R3
-<img src="./docs/Ardunio%20UNO%20R3.jpeg" width="80">
+<img src="./docs/Ardunio%20UNO%20R3.jpeg" width="200">
 ### 2. YL39 sensor
-![YL39](./docs/YL39.jpg | width=80)
+<img src="./docs/YL39.jpg" width="200">
 ### 3. DHT11 sensor
-![DHT11](./docs/DHT11.jpg | width=80)
+<img src="./docs/DHT11.jpg" width="200">
 ### 4. 3 LEDs
-![LED](./docs/LED.jpg | width=80)
+<img src="./docs/LED.jpg" width="200">
 ### 5. Resistors
-![Resistor](./docs/Resistor.jpg | width=80)
+<img src="./docs/Resistor.jpg" width="200">
 ### 6. MAX7219
-![MAX7219](./docs/MAX7219.jpg | width=80)
+<img src="./docs/MAX7219.jpg" width="200">
 ### 7. Buzzer
-![Buzzer](./docs/buzzer.jpg | width=80)
+<img src="./docs/buzzer.jpg" width="200">
 ### 8. LDR Module
-![ldr](./docs/ldr.jpg | width=80)
+<img src="./docs/ldr.jpg" width="200">
 
 The system is built around an Arduino microcontroller, which serves as the central processing unit. The Arduino board provides the necessary computational power and interfaces to connect and control various hardware modules.
 
