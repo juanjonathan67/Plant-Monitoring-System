@@ -17,8 +17,12 @@ DHT11_sensor:
 ;-----------------------------------------------------------------
 loop:
 ;--------------------------------------------------------
-    ;RCALL MAX7219_clear
-    ;RCALL delay1_s
+    CBI PORTD, 0
+    CBI PORTD, 4
+    CBI PORTD, 2
+    CBI PORTD, 3
+;--------------------------------------------------------
+    RCALL MAX7219_clear
     RCALL MAX7219_disp_text_temp_humid
     RCALL delay_2s      ;wait 2s for DHT11 to get ready
 ;-----------------------------------------------------------------
@@ -59,10 +63,6 @@ w3: SBIC  PIND, 7
     RCALL binary2decimal  ;humidity in decimal
     ;-------------------
     RCALL delay_5s
-    CBI PORTD, 0
-    CBI PORTD, 1
-    CBI PORTD, 2
-    CBI PORTD, 3
     RJMP YL39
     RJMP loop           ;go back & get another sensor reading
 
@@ -77,7 +77,7 @@ YL39:
 
 YL39out:
   INC R29               ;increment apabila dry
-  SBI PORTD, 1          
+  ;SBI PORTD, 1          
   RCALL MAX7219_disp_text_dry ;ke disp dry
   RCALL delay_5s
   RJMP LDR              ;lompat ke ldr
@@ -86,22 +86,19 @@ LDR:
   SBIS PIND, 6          ;cek LDR
   RJMP LDRout           ;apabila dark pindah ke LDRout
   RCALL MAX7219_disp_text_light ;ke disp light
-  RCALL delay_5s        ;delay
   RJMP BUZZ             ;lompat ke buzz
 
 LDRout:
   INC R29               ;increment apabila dark
-  SBI PORTD, 2        
+  ;SBI PORTD, 2        
   RCALL MAX7219_disp_text_dark  ;ke disp dark
-  RCALL delay_5s        ;delay 5s
   RJMP BUZZ             ;lompat ke buzz
 
 BUZZ:
   MOV R30, R29
   CPI R30, 2            ;apabila dark dan dry
   BREQ BUZZout          ;ke buzzout
-  MOV R30, R29
-  CPI R29, 1            ;apabila salah satu dark atau dry
+  CPI R30, 1            ;apabila salah satu dark atau dry
   BREQ Warning          ;ke warning
   RJMP Clear            ;ke clear
   
@@ -112,7 +109,7 @@ BUZZout:
   RJMP loop
 
 Warning: 
-  SBI PORTD, 1          ;set led kuning
+  SBI PORTD, 4          ;set led kuning
   RCALL delay_5s  
   RJMP loop
 
