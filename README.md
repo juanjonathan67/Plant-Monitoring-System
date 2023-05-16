@@ -74,8 +74,7 @@ We use the Arduino IDE to program using assembly language. Assembly programming 
 
 The software code that we programmed will direct how the Arduino behave. Our most important feature is to show the reading from the sensors to the Max7219. The code will allow us to determine how the sensors and Max7219 send each other data. The code will also be used to determine the status of the LED, for the full table of LED status is down below:
 
-| LED    | LED 1   | LED 2    | LED 3 |
-| Status | (GREEN) | (YELLOW) | (RED) |
+| Status |  GREEN  | YELLOW   | RED   |
 | ------ | ------- | -------- | ----- |
 | M / T  | ON      | OFF      | OFF   |
 | M / G  | OFF     | ON       | OFF   |
