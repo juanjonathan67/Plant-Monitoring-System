@@ -12,7 +12,7 @@ The hardware and design implementation of the Plant Monitoring System involves s
 
 ### Components:
 ### 1. Arduino UNO R3
-![Arduino UNO R3](./docs/Ardunio%20UNO%20R3.jpeg | width=80)
+<img src="./docs/Ardunio%20UNO%20R3.jpeg" width="80">
 ### 2. YL39 sensor
 ![YL39](./docs/YL39.jpg | width=80)
 ### 3. DHT11 sensor
