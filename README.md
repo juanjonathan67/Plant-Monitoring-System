@@ -12,33 +12,33 @@ The hardware and design implementation of the Plant Monitoring System involves s
 
 ### Components:
 ### 1. Arduino UNO R3
-<img src="./docs/Ardunio%20UNO%20R3.jpeg" width="200">
+<div style="text-align:center"><img src="./docs/Ardunio%20UNO%20R3.jpeg" width="300"></div>
 ### 2. YL39 sensor
-<img src="./docs/YL39.jpg" width="200">
+<div style="text-align:center"><img src="./docs/YL39.jpg" width="300"></div>
 ### 3. DHT11 sensor
-<img src="./docs/DHT11.jpg" width="200">
+<div style="text-align:center"><img src="./docs/DHT11.jpg" width="300"></div>
 ### 4. 3 LEDs
-<img src="./docs/LED.jpg" width="200">
+<div style="text-align:center"><img src="./docs/LED.jpg" width="300"></div>
 ### 5. Resistors
-<img src="./docs/Resistor.jpg" width="200">
+<div style="text-align:center"><img src="./docs/Resistor.jpg" width="300"></div>
 ### 6. MAX7219
-<img src="./docs/MAX7219.jpg" width="200">
+<div style="text-align:center"><img src="./docs/MAX7219.jpg" width="300"></div>
 ### 7. Buzzer
-<img src="./docs/buzzer.jpg" width="200">
+<div style="text-align:center"><img src="./docs/buzzer.jpg" width="300"></div>
 ### 8. LDR Module
-<img src="./docs/ldr.jpg" width="200">
+<div style="text-align:center"><img src="./docs/ldr.jpg" width="300"></div>
 
-The system is built around an Arduino microcontroller, which serves as the central processing unit. The Arduino board provides the necessary computational power and interfaces to connect and control various hardware modules.
+This system is built around an Arduino microcontroller, which serves as the central processing unit. The Arduino board provides the necessary computational power and interfaces to connect and control various hardware modules.
 
 Sensors:
 
-**a. Moisture Sensor:** A moisture sensor is used to measure the moisture level in the soil or growing medium. It is typically connected to the Arduino board via digital input pins.
+**a. Moisture Sensor:** A moisture sensor YL39 is used to measure the moisture level in the soil or growing medium. It is connected to the Arduino board via digital input pins.
 
 **b. Temperature and Humidity Sensor:** A temperature and humidity sensor, such as the DHT series sensor, is utilized to measure ambient temperature and humidity. This sensor is connected to the Arduino board through digital input/output pins.
 
 **c. Light Sensor:** A light-dependent resistor (LDR) is used to measure the intensity of light in the plant's environment. The LDR is connected to the Arduino board through digital input pins.
 
-A display module, such as MAX7219 seven segment display, can be incorporated to provide real-time feedback and visualization of the sensor readings and system status. The display module is connected to the Arduino board through appropriate communication protocols such as SPI.
+A display module (MAX7219 seven segment display) is incorporated to provide real-time feedback and visualization of the sensor readings and system status. The display module is connected to the Arduino board through appropriate communication protocols such as SPI.
 
 ## Software
 ### [Ardunio IDE 2](https://www.arduino.cc/en/software)
