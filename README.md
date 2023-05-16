@@ -110,6 +110,20 @@ User acceptance testing demonstrated that the system, when all the components ar
 
 In conclusion, the testing process for the Plant Monitoring System encompassed unit testing, integration testing, and user acceptance testing. The system passed all testing phases successfully, exhibiting accurate readings, seamless integration, efficient performance, and positive user feedback. These tests assure the reliability and functionality of the Plant Monitoring System, making it a valuable tool for plant enthusiasts and professionals alike.
 
+## Conclusion
+Plant Monitoring System is an Arduino Uno project that is fully coded in Assembly Language and is used to monitor factors that impact the plants such as soil moisture level, light intensity, temperature and humidity using three sensors that is YL38, DHT11, and LDR. Then show that reading to MAX7219. After that the LEDs will light up according to the truth table that has been set.  
+
+This project will be able to make plant monitoring more efficient, reliable and less time-consuming. This project also is user friendly towards small farmers / gardeners because it’s cost efficient and easy to implement. But at the same time this project is easy to scale up so that big farms can also use this project as well. 
+
+Through this project we used and learn various hardware such as all the sensors and the Arduino itself, we first tried to make this project in Protheus in which it worked really well and according to what we wanted. But when we tried to assemble and integrate the hardware and software, we faced some difficulties along the way. The most prominent one was working with Max7219 that sometimes doesn’t show the accurate reading of the sensors and even sometimes it bugged out and doesn’t show the output at all. 
+
+But through all those difficulties in the end we managed to fix all the problems and make sure that everything worked accordingly. We learn the importance of the quality of the material because it impacts greatly on how the hardware worked. Overall, this project was a really fun learning experience for us.
+
+## Future Work
+Plant Monitoring System in it's current state has done it's job well but there are a lot of things that can be improved on such as : 
+* Feature to automatically pour water when the soil moisture is dry
+* Upscale the project so it can accommodate bigger farms.
+
 ## How to Use
 1. Connect all hardware following the Connection Diagram
 2. Clone the repository
