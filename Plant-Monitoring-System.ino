@@ -1,8 +1,8 @@
 /* Notes
 Output :
-LED hijau : Pin Digital 0 (PD0)
-LED kuning : Pin Digital 2 (PD2)
-LED merah : Pin Digital 4 (PD4)
+LED green : Pin Digital 0 (PD0)
+LED yellow : Pin Digital 2 (PD2)
+LED red : Pin Digital 4 (PD4)
 Buzzer : Pin Digital 8 (PB0)
 
 Input : 
