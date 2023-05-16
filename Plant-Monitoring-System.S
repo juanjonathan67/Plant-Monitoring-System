@@ -76,8 +76,7 @@ YL39:
   RJMP LDR
 
 YL39out:
-  INC R29               ;increment apabila dry
-  ;SBI PORTD, 1          
+  INC R29               ;increment apabila dry       
   RCALL MAX7219_disp_text_dry ;ke disp dry
   RCALL delay_5s
   RJMP LDR              ;lompat ke ldr
@@ -89,8 +88,7 @@ LDR:
   RJMP BUZZ             ;lompat ke buzz
 
 LDRout:
-  INC R29               ;increment apabila dark
-  ;SBI PORTD, 2        
+  INC R29               ;increment apabila dark    
   RCALL MAX7219_disp_text_dark  ;ke disp dark
   RJMP BUZZ             ;lompat ke buzz
 
@@ -103,8 +101,8 @@ BUZZ:
   RJMP Clear            ;ke clear
   
 BUZZout:
-  SBI PORTD, 3          ;set buzzer
-  SBI PORTD, 2          ;set led merah     
+  SBI PORTD, 2          ;set led merah   
+  SBI PORTD, 3          ;set buzzer   
   RCALL delay_5s
   RJMP loop
 
