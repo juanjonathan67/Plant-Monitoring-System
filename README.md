@@ -69,7 +69,47 @@ Arduino IDE 2 will be used to flash the program into the arduino via USB type B 
 ### AVR Assembly
 The program is fully written in AVR Assembly, thus it is designed and only tested on Arduino UNO R3, specifically ATMega328p processor. This was not tested on any other device.
 
-## Connection Diagram & Simulation
+## Software implementation details
+We use the Arduino IDE to program using assembly language. Assembly programming is done by programming each component individually from DHT11, YL39, and also MAX 7219. These three components can be programmed via the Arduino Uno R3 microcontroller based on the ATMega28p chip.
+
+The software code that we programmed will direct how the Arduino behave. Our most important feature is to show the reading from the sensors to the Max7219. The code will allow us to determine how the sensors and Max7219 send each other data. The code will also be used to determine the status of the LED, for the full table of LED status is down below:
+
+| LED    | LED 1   | LED 2    | LED 3 |
+| Status | (GREEN) | (YELLOW) | (RED) |
+| ------ | ------- | -------- | ----- |
+| M / T  | ON      | OFF      | OFF   |
+| M / G  | OFF     | ON       | OFF   |
+| D / T  | OFF     | ON       | OFF   |
+| D / G  | OFF     | OFF      | ON    |
+
+Notes:
+* M = Moist 
+* T = Terang
+* G = Gelap
+* D = Dry
+
+## Test results and performance evaluation
+The Plant Monitoring System project was developed using Arduino assembly to create an automated system for monitoring the health and environmental conditions of plants. To ensure the reliability and functionality of the system, rigorous testing was conducted at various stages of development. This section outlines the testing methodologies employed and the results obtained.
+
+Integration testing aimed to assess the seamless integration of all the individual components and modules of the Plant Monitoring System. The objective was to ensure that data flow and communication between various modules were functioning as expected. Test cases were designed to simulate different scenarios. The system was tested for stability, responsiveness, and data accuracy during these scenarios.
+
+In this case, we tested the system integrating only the DHT sensor and MAX7219 first to see if those two components can communicate and display the correct reading. Next, we also tested moisture sensor and MAX7219, along with just the LDR sensor with MAX7219 only. 
+
+All individual components passed the unit testing phase successfully. The moisture sensor provided accurate moisture level readings, the temperature sensor measured the ambient temperature accurately, and the LCD display exhibited the correct output.
+
+<p align="center" width="100%">
+    <img width="33%" src="./docs/figure3.1.png"> 
+</p>
+
+The integration testing phase verified that the components of the Plant Monitoring System were effectively integrated. Data flow between modules was smooth, and the system provided accurate and real-time readings of environmental parameters for multiple plants.
+
+<p align="center" width="100%">
+    <img width="33%" src="./docs/figure3.2.png"> 
+</p>
+
+User acceptance testing demonstrated that the system, when all the components are connected and used together in order to try it in the real-world environment has successfully outputted a correct reading of the environment temperature which was displayed on the MAX7219, the moisture level and the light level have also been successfully displayed on the display this is showed by the display showing the status as one of GELAP, TERANG, DRY, MOIST.
+
+In conclusion, the testing process for the Plant Monitoring System encompassed unit testing, integration testing, and user acceptance testing. The system passed all testing phases successfully, exhibiting accurate readings, seamless integration, efficient performance, and positive user feedback. These tests assure the reliability and functionality of the Plant Monitoring System, making it a valuable tool for plant enthusiasts and professionals alike.
 
 ## How to Use
 1. Connect all hardware following the Connection Diagram
