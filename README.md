@@ -11,22 +11,45 @@ The Plant Monitoring System addresses this problem by providing an automated and
 The hardware and design implementation of the Plant Monitoring System involves several components and considerations to ensure accurate monitoring and reliable performance. The following are the key hardware components and design considerations for the system:
 
 ### Components:
-### 1. Arduino UNO R3
-<div style="text-align:center"><img src="./docs/Ardunio%20UNO%20R3.jpeg" width="300"></div>
-### 2. YL39 sensor
-<div style="text-align:center"><img src="./docs/YL39.jpg" width="300"></div>
-### 3. DHT11 sensor
-<div style="text-align:center"><img src="./docs/DHT11.jpg" width="300"></div>
-### 4. 3 LEDs
-<div style="text-align:center"><img src="./docs/LED.jpg" width="300"></div>
-### 5. Resistors
-<div style="text-align:center"><img src="./docs/Resistor.jpg" width="300"></div>
-### 6. MAX7219
-<div style="text-align:center"><img src="./docs/MAX7219.jpg" width="300"></div>
-### 7. Buzzer
-<div style="text-align:center"><img src="./docs/buzzer.jpg" width="300"></div>
-### 8. LDR Module
-<div style="text-align:center"><img src="./docs/ldr.jpg" width="300"></div>
+**1. Arduino UNO R3**
+<p align="center" width="100%">
+    <img width="33%" src="./docs/Ardunio%20UNO%20R3.jpeg"> 
+</p>
+
+**2. YL39 sensor**
+<p align="center" width="100%">
+    <img width="33%" src="./docs/YL39.jpg"> 
+</p>
+
+**3. DHT11 sensor**
+<p align="center" width="100%">
+    <img width="33%" src="./docs/DHT11.jpg"> 
+</p>
+
+**4. 3 LEDs**
+<p align="center" width="100%">
+    <img width="33%" src="./docs/LED.jpg"> 
+</p>
+
+**5. Resistors**
+<p align="center" width="100%">
+    <img width="33%" src="./docs/Resistor.jpg"> 
+</p>
+
+**6. MAX7219**
+<p align="center" width="100%">
+    <img width="33%" src="./docs/MAX7219.jpg"> 
+</p>
+
+**7. Buzzer**
+<p align="center" width="100%">
+    <img width="33%" src="./docs/buzzer.jpg"> 
+</p>
+
+**8. LDR Module**
+<p align="center" width="100%">
+    <img width="33%" src="./docs/ldr.jpg"> 
+</p>
 
 This system is built around an Arduino microcontroller, which serves as the central processing unit. The Arduino board provides the necessary computational power and interfaces to connect and control various hardware modules.
 
