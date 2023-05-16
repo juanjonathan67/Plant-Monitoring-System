@@ -1,8 +1,9 @@
 /* Notes
 Output :
-LED kering : Pin Digital 1 (PD1)
-LED gelap : Pin Digital 2 (PD2)
-Buzzer : Pin Digital 3 (PD3)
+LED hijau : Pin Digital 0 (PD0)
+LED kuning : Pin Digital 2 (PD2)
+LED merah : Pin Digital 4 (PD4)
+Buzzer : Pin Digital 8 (PB0)
 
 Input : 
 Yl39 : Pin Digital 5 (PD5)
