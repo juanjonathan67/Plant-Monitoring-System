@@ -59,10 +59,11 @@ w3: SBIC  PIND, 7
     RCALL binary2decimal  ;humidity in decimal
     ;-------------------
     RCALL delay_5s
-    ;CBI PORTD, 0
-    ;CBI PORTD, 1
-    ;CBI PORTD, 2
-    ;RJMP YL39
+    CBI PORTD, 0
+    CBI PORTD, 1
+    CBI PORTD, 2
+    CBI PORTD, 3
+    RJMP YL39
     RJMP loop           ;go back & get another sensor reading
 
 
