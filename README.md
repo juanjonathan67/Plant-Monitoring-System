@@ -137,3 +137,7 @@ git clone https://github.com/juanjonathan67/Plant-Monitoring-System.git
 7. Upload by clicking the arrow key icon next to the checklist icon
 
 ## Contributors
+* Juan Jonathan 
+* Rafi Fauzan Wirasena 
+* Farrel Mirawan 
+* Eriqo Wicaksono
